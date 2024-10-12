@@ -1,0 +1,62 @@
+---
+import DocLayout from "@/layout/DocLayout.astro";
+
+import { Code } from '@astrojs/starlight/components';
+
+const exampleCode = `
+import * as PIXI from 'pixi.js';
+
+const app = new PIXI.Application({ width: 800, height: 200 });
+const container = document.getElementById('pixi-container')!;
+container.appendChild(app.view);
+
+// 创建容器
+const pixiContainer = new PIXI.Container();
+const sprite1 = PIXI.Sprite.from('https://pixijs.io/examples/examples/assets/bunny.png');
+const sprite2 = PIXI.Sprite.from('https://pixijs.io/examples/examples/assets/bunny.png');
+pixiContainer.addChild(sprite1, sprite2);
+sprite1.anchor.set(0.5);
+sprite2.anchor.set(0.5);
+sprite1.x = 100;
+sprite2.x = 200;
+sprite1.y = 100;
+sprite2.y = 100;
+app.stage.addChild(pixiContainer);
+
+app.ticker.add(() => {
+  pixiContainer.x += 1;
+  pixiContainer.x %= app.screen.width;
+});
+`;
+---
+
+<DocLayout title="容器">
+  <div id="pixi-container" class="w-full"></div>
+  <Code code={exampleCode} lang="js" title="示例代码" />
+</DocLayout>
+
+<script>
+import * as PIXI from 'pixi.js';
+
+const app = new PIXI.Application({ width: 800, height: 200 });
+const container = document.getElementById('pixi-container')!;
+container.appendChild(app.view);
+
+// 创建容器
+const pixiContainer = new PIXI.Container();
+const sprite1 = PIXI.Sprite.from('https://pixijs.io/examples/examples/assets/bunny.png');
+const sprite2 = PIXI.Sprite.from('https://pixijs.io/examples/examples/assets/bunny.png');
+pixiContainer.addChild(sprite1, sprite2);
+sprite1.anchor.set(0.5);
+sprite2.anchor.set(0.5);
+sprite1.x = 100;
+sprite2.x = 200;
+sprite1.y = 100;
+sprite2.y = 100;
+app.stage.addChild(pixiContainer);
+
+app.ticker.add(() => {
+  pixiContainer.x += 1;
+  pixiContainer.x %= app.screen.width;
+});
+</script>
