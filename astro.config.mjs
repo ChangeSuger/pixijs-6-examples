@@ -10,7 +10,7 @@ export default defineConfig({
     starlight({
       title: "PixiJS 6 Examples",
       social: {
-        github: "https://github.com/withastro/starlight",
+        github: "https://github.com/ChangeSuger/pixijs-6-examples",
       },
       defaultLocale: "zh-CN",
       locales: {
