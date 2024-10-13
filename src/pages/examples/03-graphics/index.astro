@@ -1,0 +1,155 @@
+---
+import DocLayout from "@/layout/DocLayout.astro";
+
+import { Code } from '@astrojs/starlight/components';
+
+const exampleCode1 = `
+import * as PIXI from 'pixi.js';
+
+const app = new PIXI.Application({ width: 800, height: 600 });
+const container = document.getElementById('pixi-container')!;
+container.appendChild(app.view);
+
+const graphics = new PIXI.Graphics();
+graphics.beginFill(0xffffff);
+graphics.drawRect(0, 0, app.screen.width / 2, app.screen.height / 2);
+graphics.endFill();
+graphics.beginFill(0xff00ff, 0.5);
+graphics.drawCircle(app.screen.width / 2, app.screen.height / 2, app.screen.width / 4);
+graphics.endFill();
+app.stage.addChild(graphics);
+`;
+
+const exampleCode2 = `
+import * as PIXI from 'pixi.js';
+
+const app = new PIXI.Application({ width: 800, height: 600 });
+const container = document.getElementById('pixi-container2')!;
+container.appendChild(app.view);
+
+const graphics = new PIXI.Graphics();
+graphics.beginFill(0xffffff);
+graphics.drawRect(0, 0, app.screen.width / 2, app.screen.height / 2);
+graphics.endFill();
+graphics.beginFill(0xff00ff, 0.5);
+graphics.drawCircle(app.screen.width / 2, app.screen.height / 2, app.screen.width / 4);
+graphics.endFill();
+app.stage.addChild(graphics);
+
+const graphicsClone = new PIXI.Graphics(graphics.geometry);
+graphicsClone.position.set(100, 100);
+app.stage.addChild(graphicsClone);
+`;
+
+const exampleCode3 = `
+import * as PIXI from 'pixi.js';
+
+const app = new PIXI.Application({ width: 800, height: 600 });
+const container = document.getElementById('pixi-container3')!;
+container.appendChild(app.view);
+
+const sprite1 = PIXI.Sprite.from(PIXI.Texture.WHITE);
+sprite1.width = app.screen.width / 2;
+sprite1.height = app.screen.height / 2;
+const mask1 = new PIXI.Graphics();
+mask1.beginFill(0x000000);
+mask1.drawRect(app.screen.width / 8, app.screen.height / 8, app.screen.width / 4, app.screen.height / 4);
+mask1.endFill();
+sprite1.mask = mask1;
+app.stage.addChild(sprite1);
+
+const sprite2 = PIXI.Sprite.from(PIXI.Texture.WHITE);
+sprite2.width = app.screen.width / 2;
+sprite2.height = app.screen.height / 2;
+sprite2.x = app.screen.width / 2;
+sprite2.y = app.screen.height / 2;
+const mask2 = new PIXI.Graphics();
+mask2.beginFill(0x000000);
+mask2.drawCircle(app.screen.width * 3 / 4, app.screen.height * 3 / 4, app.screen.width / 8);
+mask2.endFill();
+sprite2.mask = mask2;
+app.stage.addChild(sprite2);
+`;
+---
+
+<DocLayout title="图形">
+  <h2>图形绘制</h2>
+  <div id="pixi-container1" class="w-full"></div>
+  <Code code={exampleCode1} lang="js" title="示例代码" />
+
+  <h2>图形重用</h2>
+  <div id="pixi-container2" class="w-full"></div>
+  <Code code={exampleCode2} lang="js" title="示例代码" />
+
+  <h2>遮罩</h2>
+  <div id="pixi-container3" class="w-full"></div>
+  <Code code={exampleCode3} lang="js" title="示例代码" />
+</DocLayout>
+
+<script>
+import * as PIXI from 'pixi.js';
+
+const app = new PIXI.Application({ width: 800, height: 600 });
+const container = document.getElementById('pixi-container1')!;
+container.appendChild(app.view);
+
+const graphics = new PIXI.Graphics();
+graphics.beginFill(0xffffff);
+graphics.drawRect(0, 0, app.screen.width / 2, app.screen.height / 2);
+graphics.endFill();
+graphics.beginFill(0xff00ff, 0.5);
+graphics.drawCircle(app.screen.width / 2, app.screen.height / 2, app.screen.width / 4);
+graphics.endFill();
+app.stage.addChild(graphics);
+</script>
+
+<script>
+import * as PIXI from 'pixi.js';
+
+const app = new PIXI.Application({ width: 800, height: 600 });
+const container = document.getElementById('pixi-container2')!;
+container.appendChild(app.view);
+
+const graphics = new PIXI.Graphics();
+graphics.beginFill(0xffffff);
+graphics.drawRect(0, 0, app.screen.width / 2, app.screen.height / 2);
+graphics.endFill();
+graphics.beginFill(0xff00ff, 0.5);
+graphics.drawCircle(app.screen.width / 2, app.screen.height / 2, app.screen.width / 4);
+graphics.endFill();
+app.stage.addChild(graphics);
+
+const graphicsClone = new PIXI.Graphics(graphics.geometry);
+graphicsClone.position.set(100, 100);
+app.stage.addChild(graphicsClone);
+</script>
+
+<script>
+import * as PIXI from 'pixi.js';
+
+const app = new PIXI.Application({ width: 800, height: 600 });
+const container = document.getElementById('pixi-container3')!;
+container.appendChild(app.view);
+
+const sprite1 = PIXI.Sprite.from(PIXI.Texture.WHITE);
+sprite1.width = app.screen.width / 2;
+sprite1.height = app.screen.height / 2;
+const mask1 = new PIXI.Graphics();
+mask1.beginFill(0x000000);
+mask1.drawRect(app.screen.width / 8, app.screen.height / 8, app.screen.width / 4, app.screen.height / 4);
+mask1.endFill();
+sprite1.mask = mask1;
+app.stage.addChild(sprite1);
+
+const sprite2 = PIXI.Sprite.from(PIXI.Texture.WHITE);
+sprite2.width = app.screen.width / 2;
+sprite2.height = app.screen.height / 2;
+sprite2.x = app.screen.width / 2;
+sprite2.y = app.screen.height / 2;
+const mask2 = new PIXI.Graphics();
+mask2.beginFill(0x000000);
+mask2.drawCircle(app.screen.width * 3 / 4, app.screen.height * 3 / 4, app.screen.width / 8);
+mask2.endFill();
+sprite2.mask = mask2;
+app.stage.addChild(sprite2);
+</script>
