@@ -37,45 +37,29 @@ app.ticker.add(delta => {
   }
 });
 
-const mask = new PIXI.Container();
-mask.width = app.screen.width;
-mask.height = app.screen.height;
-const graphics = new PIXI.Graphics();
-graphics.beginFill(0x000000);
-graphics.drawRect(0, 0, app.screen.width, app.screen.height / 4);
-graphics.endFill();
-graphics.beginFill(0x000000);
-graphics.drawRect(0, app.screen.height - app.screen.height / 4, app.screen.width, app.screen.height / 4);
-graphics.endFill();
-graphics.beginFill(0x000000);
-graphics.drawRect(0, 0, app.screen.width / 4, app.screen.height);
-graphics.endFill();
-graphics.beginFill(0x000000);
-graphics.drawRect(app.screen.width - app.screen.width / 4, 0, app.screen.width / 4, app.screen.height);
-graphics.endFill();
-mask.addChild(graphics);
+const mask = new PIXI.Graphics();
+mask.beginFill(0x000000);
+mask.drawRect(0, 0, app.screen.width, app.screen.height / 4);
+mask.drawRect(0, app.screen.height - app.screen.height / 4, app.screen.width, app.screen.height / 4);
+mask.drawRect(0, 0, app.screen.width / 4, app.screen.height);
+mask.drawRect(app.screen.width - app.screen.width / 4, 0, app.screen.width / 4, app.screen.height);
+mask.endFill();
 container.addChild(mask);
 mask.filters = [new PIXI.filters.AlphaFilter(0.3), new PIXI.filters.BlurFilter(50)];
 
-const animation = new PIXI.Container();
 const bar = new PIXI.Graphics();
 bar.beginFill(0x000000);
 bar.drawRect(-app.screen.width / 2, -app.screen.height / 2, app.screen.width * 2, app.screen.height / 6);
-bar.endFill();
-bar.beginFill(0x000000);
 bar.drawRect(-app.screen.width / 2, -app.screen.height * 3 / 2, app.screen.width * 2, app.screen.height / 12);
-bar.endFill();
-bar.beginFill(0x000000);
 bar.drawRect(-app.screen.width / 2, -app.screen.height * 5 / 2, app.screen.width * 2, app.screen.height / 3);
 bar.endFill();
-animation.addChild(bar);
-animation.filters = [new PIXI.filters.AlphaFilter(0.3), new PIXI.filters.BlurFilter(5)];
-container.addChild(animation);
+bar.filters = [new PIXI.filters.AlphaFilter(0.3), new PIXI.filters.BlurFilter(5)];
+container.addChild(bar);
 
 app.ticker.add(delta => {
-  animation.y += delta * 10;
-  if (animation.y > app.screen.height * 3.5) {
-    animation.y = 0;
+  bar.y += delta * 10;
+  if (bar.y > app.screen.height * 3.5) {
+    bar.y = 0;
   }
 });
 `;
@@ -120,45 +104,29 @@ app.ticker.add(delta => {
   }
 });
 
-const mask = new PIXI.Container();
-mask.width = app.screen.width;
-mask.height = app.screen.height;
-const graphics = new PIXI.Graphics();
-graphics.beginFill(0x000000);
-graphics.drawRect(0, 0, app.screen.width, app.screen.height / 4);
-graphics.endFill();
-graphics.beginFill(0x000000);
-graphics.drawRect(0, app.screen.height - app.screen.height / 4, app.screen.width, app.screen.height / 4);
-graphics.endFill();
-graphics.beginFill(0x000000);
-graphics.drawRect(0, 0, app.screen.width / 4, app.screen.height);
-graphics.endFill();
-graphics.beginFill(0x000000);
-graphics.drawRect(app.screen.width - app.screen.width / 4, 0, app.screen.width / 4, app.screen.height);
-graphics.endFill();
-mask.addChild(graphics);
+const mask = new PIXI.Graphics();
+mask.beginFill(0x000000);
+mask.drawRect(0, 0, app.screen.width, app.screen.height / 4);
+mask.drawRect(0, app.screen.height - app.screen.height / 4, app.screen.width, app.screen.height / 4);
+mask.drawRect(0, 0, app.screen.width / 4, app.screen.height);
+mask.drawRect(app.screen.width - app.screen.width / 4, 0, app.screen.width / 4, app.screen.height);
+mask.endFill();
 container.addChild(mask);
 mask.filters = [new PIXI.filters.AlphaFilter(0.3), new PIXI.filters.BlurFilter(50)];
 
-const animation = new PIXI.Container();
 const bar = new PIXI.Graphics();
 bar.beginFill(0x000000);
 bar.drawRect(-app.screen.width / 2, -app.screen.height / 2, app.screen.width * 2, app.screen.height / 6);
-bar.endFill();
-bar.beginFill(0x000000);
 bar.drawRect(-app.screen.width / 2, -app.screen.height * 3 / 2, app.screen.width * 2, app.screen.height / 12);
-bar.endFill();
-bar.beginFill(0x000000);
 bar.drawRect(-app.screen.width / 2, -app.screen.height * 5 / 2, app.screen.width * 2, app.screen.height / 3);
 bar.endFill();
-animation.addChild(bar);
-animation.filters = [new PIXI.filters.AlphaFilter(0.3), new PIXI.filters.BlurFilter(5)];
-container.addChild(animation);
+bar.filters = [new PIXI.filters.AlphaFilter(0.3), new PIXI.filters.BlurFilter(5)];
+container.addChild(bar);
 
 app.ticker.add(delta => {
-  animation.y += delta * 10;
-  if (animation.y > app.screen.height * 3.5) {
-    animation.y = 0;
+  bar.y += delta * 10;
+  if (bar.y > app.screen.height * 3.5) {
+    bar.y = 0;
   }
 });
 </script>
