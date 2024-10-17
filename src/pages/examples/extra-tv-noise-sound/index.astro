@@ -78,8 +78,6 @@ const pixiContainer = document.getElementById('pixi-container')!;
 pixiContainer.appendChild(app.view);
 
 const container = new PIXI.Container();
-container.width = app.screen.width;
-container.height = app.screen.height;
 app.stage.addChild(container);
 
 // 创建一个精灵，模拟电视屏幕
